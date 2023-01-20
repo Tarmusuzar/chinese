@@ -4,13 +4,22 @@
         <input type="text" placeholder="Name" class="nameInput">
         <input type="text" placeholder="Mobile Number" class="numberInput">
         <span class="rememberMe"><input type="checkbox"  > Remember Me</span>
-        <button>Order Now</button>
+        <button @click.prevent="edit">Order Now</button>
         <p>Continue As Guest</p>
    </form>
    <footer>
     <b>&copy; Gypsy Chinese Restaurant LLC 2023</b>
    </footer>
 </template>
+<script>
+ export default{
+   methods:{
+edit(){
+alert()
+}
+}
+}
+</script>
 <style scoped>
     .container{
         display: flex;
