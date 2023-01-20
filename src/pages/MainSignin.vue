@@ -4,7 +4,7 @@
         <input type="text" placeholder="Name" class="nameInput">
         <input type="text" placeholder="Mobile Number" class="numberInput">
         <span class="rememberMe"><input type="checkbox"  > Remember Me</span>
-        <button>Proceed</button>
+        <button>Order Now</button>
         <p>Continue As Guest</p>
    </form>
    <footer>
