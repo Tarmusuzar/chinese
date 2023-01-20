@@ -9,8 +9,10 @@ import { createRouter,createWebHistory } from 'vue-router'
 const router = createRouter({
     history:createWebHistory(),
     routes:[
-        {path:'/',component:MainSignin},
         {path:'/admin',component:MainAdminproducts},
+        {path:'/',component:MainSignin},
+
+        
         
     ]
 })
