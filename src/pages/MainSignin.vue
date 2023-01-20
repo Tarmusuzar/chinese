@@ -15,7 +15,7 @@
  export default{
    methods:{
 edit(){
-alert("This app under development by Francis. Check in later for updates")
+alert("This is app under development by Francis. Check in later for updates")
 }
 }
 }
