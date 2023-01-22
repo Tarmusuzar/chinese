@@ -20,9 +20,9 @@
     </div>
 </template>
 <style scoped>
-    div{
+    .assistanceContainer{
         display:flex;
-        flex-direction:colum;
+        flex-direction:column;
         justify-content:space-between;
         align-items:center;
         width:80%;
