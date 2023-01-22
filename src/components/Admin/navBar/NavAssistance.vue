@@ -11,10 +11,11 @@
                 <i class="fa-solid fa-envelope"></i>
                 <p>Email Francis</p>
                 <p> Tarmusuzar@gmail.com</p>
-        </divclass= "contactHolder"> 
-           <div>   
+        </div> 
+        
+         <div class= "contactHolder">   
                 <i class="fa-solid fa-message-bot"></i>
-                <p>ETalk to a Rebot</p>
+                <p>Talk to a Rebot</p>
                 <p> Link here</p>
         </div> 
     </div>
