@@ -28,6 +28,7 @@
         width:80%;
         margin:3rem auto;
         box-shadow:0 0 2px 1px black;
+        background-color:red;
     }
     .contactHolder{
         width:100%;
