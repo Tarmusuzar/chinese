@@ -22,7 +22,7 @@
         /* border: 1px solid red; */
         white-space: nowrap;
         padding: .8rem;
-        box-shadow: 0 0  5px 3px gray;
+        box-shadow: 0 0  2px 1px gray;
         border-radius: 4px;
 
     }
