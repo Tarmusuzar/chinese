@@ -20,7 +20,7 @@
     </div>
 </template>
 <style scoped>
-    .assistanceContainer,.contactHolder{
+    div{
         display:flex;
         flex-direction:colum;
         justify-content:space-between;
