@@ -1,3 +1,11 @@
 <template>
-    <h1>settings</h1>
+    <the-showall></the-showall>
 </template>
+<script>
+import TheShowall from './TheShowall.vue'
+    export default{
+        components:{
+            TheShowall
+        }
+    }
+</script>
