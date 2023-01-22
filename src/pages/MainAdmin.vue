@@ -31,7 +31,7 @@ export default {
     },
     data(){
         return{
-            NavDashboard:'nav-mangeorders'
+            NavDashboard:'nav-manageorders'
         }
     },
     methods:{
