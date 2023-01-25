@@ -5,11 +5,12 @@
         <input id="first" type="text" placeholder="Product Name" v-model="name">
         <input type="text" placeholder="Product Price" v-model="price">
         <input type="text" placeholder="Product Description" v-model="description">
+        <input type="text" placeholder="Product image" v-model="image">
         <select name="category" id="" v-model="category" @click="toggleCategory">
-            <option value="combo"  >Combo</option>
+            <option value="combos"  >Combo</option>
             <option value="rice">Rice</option>
             <option value="noodles">Noodles</option>
-            <option value="starter">Starter</option>
+            <option value="starters">Starter</option>
         </select>
         <select name="foodType" id="" v-model="foodType" v-if="categorySelected">
             <option value="veg" >Veg</option>
@@ -24,7 +25,7 @@
 export default {
     watch:{
      category(value){
-        if(value === 'starter'){
+        if(value === 'starters'){
             this.categorySelected = true
         }else{
             this.categorySelected = false
@@ -38,40 +39,54 @@ export default {
             category:'',
             description:'',
             foodType:'',
-            categorySelected:false
+            categorySelected:false,
+            image:''
         }
     },
     methods:{
         
         addProduct(){
-            //post combos to combo folder
-            if(this.category === 'combo'){
-                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/combos.json',
+               //uploading products that are not deeply nested
+           const uploadMainsAndCombos = (category)=>{
+             if(this.category === category){
+                //check if the category selected on form is the 
+                //same as the perimeter, if so
+                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/products/'+ category +'.json',
+                //go to products file in firebase and create the perimeter folder
             {   
                 method:'post',
                 headers:{
                    'content-type':'json'
                 },
-                body:JSON.stringify({
+                body:JSON.stringify({//push the form inputs to the folder as an object
                     name:this.name,
                     price:this.price,
-                    decription:this.description
+                    decription:this.description,
+                    image:this.image
+
                     
                 })
                 }).then(data=>{
                     if(data.ok){
-                        this.$router.push('/admin')
-                    }else{
-                        this.$router.push('/error')
+                        this.$router.go()//if no error, reload the form
                     }
             }
-            )
+            ).catch(err=>{
+                this.$router.push('/error')
+                console.log(err)// if any error, load a 404 page 
+            })
             }
 
-            //post rice products to rice folder
-            else if(this.category === 'rice'){
-                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/rice.json',
-            {   
+           }
+         uploadMainsAndCombos('rice')
+         uploadMainsAndCombos('noodles')
+         uploadMainsAndCombos('combos')
+         
+         //uploading products for deeply nested items
+         const startersAndMains = (category,foodType)=>{
+            if(this.category === category && this.foodType === foodType){
+                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/products/'+category+'_' +foodType+'.json',
+            {   //check if the selected foodtype matches the foodtype perimeter, if so, create that perimeter folder in category  
                 method:'post',
                 headers:{
                    'content-type':'json'
@@ -79,53 +94,9 @@ export default {
                 body:JSON.stringify({
                     name:this.name,
                     price:this.price,
-                    decription:this.description
-                    
-                })
-                }).then(data=>{
-                    if(data.ok){
-                        this.$router.push('/admin')
-                    }else{
-                        this.$router.push('/error')
-                    }
-            }
-            )
-            }
+                    decription:this.description,
+                    image:this.image
 
-            //push noodles to noodles folder
-            else if(this.category === 'noodles'){
-                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/noodles.json',
-            {   
-                method:'post',
-                headers:{
-                   'content-type':'json'
-                },
-                body:JSON.stringify({
-                    name:this.name,
-                    price:this.price,
-                    decription:this.description
-                    
-                })
-                }).then(data=>{
-                    if(data.ok){
-                        this.$router.push('/admin')
-                    }else{
-                        this.$router.push('/error')
-                    }
-            }
-            )
-            }
-            else if(this.category === 'starter'&& this.foodType === 'veg'){
-                fetch('https://my-vue-app-8da88-default-rtdb.firebaseio.com/starter/veg.json',
-            {   
-                method:'post',
-                headers:{
-                   'content-type':'json'
-                },
-                body:JSON.stringify({
-                    name:this.name,
-                    price:this.price,
-                    decription:this.description
                     
                 })
                 }).then(data=>{
@@ -137,6 +108,12 @@ export default {
             }
             )
             }
+          
+         }
+        startersAndMains('starters','veg')
+        startersAndMains('starters','chicken')
+        startersAndMains('starters','prawns')
+            
             
         }
     }
@@ -184,6 +161,9 @@ export default {
     #first{
         margin-top: 2rem;
     
+    }
+    .addProductForm>button:hover{
+        cursor: pointer;
     }
 
 </style>

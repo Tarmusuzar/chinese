@@ -26,6 +26,10 @@
                         <i class="fa-solid fa-list-ul "></i>
                         <li>Manage Orders</li>
                     </span>
+                    <span class="flex" @click="toggleComponent('nav-manageproducts')">
+                        <i class="fa-solid fa-list-ul "></i>
+                        <li>Manage Products</li>
+                    </span>
 
                     <span class="flex" @click="toggleComponent('nav-stocklevel')">
                         <i class="fa-solid fa-arrow-trend-up"></i>
