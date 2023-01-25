@@ -18,7 +18,7 @@ export default{
             combos:[],
             noodles:[],
             rice:[],
-            starters_veg:['Veg Starters'],
+            starters_veg:[],
             starters_chicken:[],
             starters_prawns:[],
 
