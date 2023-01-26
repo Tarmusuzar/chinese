@@ -1,7 +1,7 @@
 <template>
     <guest-subnav></guest-subnav>
     <category-template heading = 'Combos' :category = combos></category-template>
-    <category-template heading="Starters Veg" :category = vegStarters></category-template>
+    <category-template heading="Starters" :category = vegStarters></category-template>
     <category-template heading="Rice" :category = rice></category-template>
     <category-template heading="Noodles" :category = noodles></category-template>
 </template>
